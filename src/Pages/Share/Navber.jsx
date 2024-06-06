@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navber = () => {
   const user = false
   return (
     <div className="shadow">
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 container">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ const Navber = () => {
            
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">MicroMint</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -74,7 +74,7 @@ const Navber = () => {
                     <a href='#about'>Review</a>
                 </li>
                 <li>
-                <a className="btn mt-1  btn-outline btn-secondary btn-sm">Watch Demo</a>
+                <a href="https://youtu.be/JE3-TN1yUEw?si=KGjiEeFdBSg2DbbC" className="btn mt-1  btn-outline btn-secondary btn-sm" target="_blank">Watch Demo</a>
                 </li>
        
           </ul>
@@ -102,7 +102,9 @@ const Navber = () => {
           </ul>
         </div>
         :
+        <Link to="/login">
         <a className="btn ml-5 btn-outline btn-secondary">Log in</a>
+        </Link>
         }
            {/* log in */}
           
