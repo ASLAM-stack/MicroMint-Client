@@ -62,7 +62,7 @@ const Navber = () => {
                     <a href='#about'>About</a>
                 </li>
                 <li>
-                    <a href='#about'>Features</a>
+                    <a href='#feature'>Features</a>
                 </li>
                 <li>
                     <a href='#about'>How it&apos;s work</a>
