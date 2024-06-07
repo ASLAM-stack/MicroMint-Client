@@ -25,7 +25,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[30] p-2 shadow bg-base-100 rounded-box w-52"
             >
                <li>
                     <NavLink to='/'>Home</NavLink>
@@ -34,10 +34,10 @@ const Navber = () => {
                     <a href='#about'>About</a>
                 </li>
                 <li>
-                    <a href='#about'>Features</a>
+                    <a href='#feature'>Features</a>
                 </li>
                 <li>
-                    <a href='#about'>How it&apos;s work</a>
+                    <a href='#how_It_Work'>How it&apos;s work</a>
                 </li>
                 <li>
                     <a href='#about'>Top Worker</a>
@@ -65,7 +65,7 @@ const Navber = () => {
                     <a href='#feature'>Features</a>
                 </li>
                 <li>
-                    <a href='#about'>How it&apos;s work</a>
+                    <a href='#how_It_Work'>How it&apos;s work</a>
                 </li>
                 <li>
                     <a href='#about'>Top Worker</a>

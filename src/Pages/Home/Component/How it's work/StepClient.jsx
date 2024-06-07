@@ -14,16 +14,23 @@ const steps = [
       description: `Register with Micromint, the thriving freelance marketplace, and unlock a world of opportunities to showcase your skills and connect with clients globally. Earn 12 coins as a freelancer and 15 coins as a client upon signing up!`,
     },
     {
-      label: 'Create an ad group',
+      label: 'Purchase Coins',
       description:
-        'An ad group contains one or more ads which target a shared set of keywords.',
+        'Purchase coins on Micromint to unlock premium features and enhance your experience on our freelance marketplace. Use these coins to bid on projects, promote your profile, and access exclusive resources.',
     },
     {
-      label: 'Create an ad',
-      description: `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`,
+      label: 'Create Task',
+      description: `Develop a robust and user-friendly freelance marketplace for Micromint, facilitating seamless connections between freelancers and clients, featuring project listings, secure payment integration, and a rating system.`,
+    },
+    {
+      label: 'Select Freelancer and Approve For Work',
+      description: ` Review and choose from a pool of skilled freelancers based on their profiles, portfolios, and client reviews. 
+
+ Confirm and authorize the selected freelancer to begin the project, ensuring they meet your requirements and expectations.`,
+    },
+    {
+      label: 'Payment',
+      description: ` After Complete Task Pay The Freelancer ensures that freelancers receive payment promptly upon the successful completion of their tasks, fostering trust and reliability within the Micromint freelance marketplace.`,
     },
   ];
 

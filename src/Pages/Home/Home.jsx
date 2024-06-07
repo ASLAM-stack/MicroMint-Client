@@ -1,6 +1,6 @@
 
-import StepClient from "./Component/How it's work/StepClient";
-import { StepWorker } from "./Component/How it's work/StepsWorker";
+import Step from "./Component/How it's work/Step";
+ 
 import OurFeatures from "./Component/Our Feature/OurFeatures";
 import Slider from "./Component/Slider";
 
@@ -11,8 +11,7 @@ const Home = () => {
         <div>
              <Slider></Slider>
              <OurFeatures></OurFeatures>
-             <StepWorker></StepWorker>
-             <StepClient></StepClient>
+            <Step></Step>
         </div>
     );
 };

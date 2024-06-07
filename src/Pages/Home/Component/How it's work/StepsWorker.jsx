@@ -31,8 +31,7 @@ const stepsW = [
     description: `Withdraw your earned coins and convert them to real money effortlessly on Micromint, the freelance marketplace that makes cashing out your rewards simple and convenient.`,
   },
 ];
-
-export const StepWorker =  () => {
+const StepWorker =  () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -98,3 +97,4 @@ export const StepWorker =  () => {
     </div>
   );
 }
+export default StepWorker;
