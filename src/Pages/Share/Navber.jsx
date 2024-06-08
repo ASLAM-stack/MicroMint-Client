@@ -40,10 +40,10 @@ const Navber = () => {
                     <a href='#how_It_Work'>How it&apos;s work</a>
                 </li>
                 <li>
-                    <a href='#about'>Top Worker</a>
+                    <a href='#topEarn'>Top Worker</a>
                 </li>
                 <li>
-                    <a href='#about'>Review</a>
+                    <a href='#review'>Review</a>
                 </li>
                 <li>
                 <a className="btn mt-1  btn-outline btn-secondary btn-sm">Watch Demo</a>
@@ -68,10 +68,10 @@ const Navber = () => {
                     <a href='#how_It_Work'>How it&apos;s work</a>
                 </li>
                 <li>
-                    <a href='#about'>Top Worker</a>
+                    <a href='#topEarn'>Top Worker</a>
                 </li>
                 <li>
-                    <a href='#about'>Review</a>
+                    <a href='#review'>Review</a>
                 </li>
                 <li>
                 <a href="https://youtu.be/JE3-TN1yUEw?si=KGjiEeFdBSg2DbbC" className="btn mt-1  btn-outline btn-secondary btn-sm" target="_blank">Watch Demo</a>

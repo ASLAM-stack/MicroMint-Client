@@ -20,7 +20,7 @@ const TopEarn = () => {
     },[])
     return (
         <div className="container">
-            <div className="mt-24">
+            <div id="topEarn" className="mt-24">
                 <SectionTitle heading={'top Freelancer'} subHeading={'Make Money'}></SectionTitle>
                 <div>
                 <Swiper

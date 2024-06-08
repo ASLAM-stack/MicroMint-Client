@@ -21,7 +21,7 @@ const Review = () => {
        })
      },[])
     return (
-        <div className="container">
+        <div id="review" className="container">
             <div className="mt-24 mb-10">
                 <SectionTitle subHeading={'Happy Client'} heading={"what's our client say"}></SectionTitle>
                 <div className="flex gap-5 flex-wrap p-4">
