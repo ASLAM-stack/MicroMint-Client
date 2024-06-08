@@ -17,11 +17,11 @@ const Footer = () => {
             </p>
           </aside>
           <nav>
-            <h6 className="footer-title">Services</h6>
-            <a className="link link-hover">Query</a>
-            <a className="link link-hover">Recommendation for you</a>
-            <a className="link link-hover">My Queries</a>
-            <a className="link link-hover">My Recommendations</a>
+            <h6 className="footer-title">Feature</h6>
+            <a className="link link-hover">How it&apos;s work</a>
+            <a className="link link-hover">Top Worker</a>
+            <a className="link link-hover">Review</a>
+            <a className="link link-hover">Watch Demo</a>
           </nav>
           <nav>
             <h6 className="footer-title">Company</h6>
@@ -40,7 +40,7 @@ const Footer = () => {
         </footer>
         <hr />
         <div className="text-white px-10 flex justify-between items-center py-4">
-            <p>© 2024 Insightize. All Rights Reserved.</p>
+            <p>© 2024 MicroMint. All Rights Reserved.</p>
             <div className="flex gap-3 flex-wrap">
             <FaFacebook className="text-white text-3xl"/>
             <FaInstagram  className="text-white text-3xl" />
