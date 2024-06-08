@@ -1,0 +1,48 @@
+ [
+    {
+      "freelancer_id": 101,
+      "name": "Alice Johnson",
+      "skills": ["Web Development", "JavaScript", "React","MongoDB"],
+      "earnings": 120000,
+      "projects_completed": 35,
+      "rating": 4.9,
+      "image": "/top/person.png"
+    },
+    {
+      "freelancer_id": 102,
+      "name": "Bob Smith",
+      "skills": ["Graphic Design", "Illustrator", "Photoshop"],
+      "earnings": 95000,
+      "projects_completed": 50,
+      "rating": 4.8,
+      "image": "/top/person1.jpg"
+    },
+    {
+      "freelancer_id": 103,
+      "name": "Carol Martinez",
+      "skills": ["Content Writing", "SEO", "Blogging","local SEO"],
+      "earnings": 85000,
+      "projects_completed": 45,
+      "rating": 4.7,
+      "image": "/top/person2.jpg"
+    },
+    {
+      "freelancer_id": 104,
+      "name": "David Brown",
+      "skills": ["Data Analysis", "Python", "Machine Learning"],
+      "earnings": 105000,
+      "projects_completed": 30,
+      "rating": 4.9,
+      "image": "/top/person3.jpg"
+    },
+    {
+      "freelancer_id": 105,
+      "name": "Eva Green",
+      "skills": ["Digital Marketing", "Social Media", "Ad Campaigns"],
+      "earnings": 90000,
+      "projects_completed": 40,
+      "rating": 4.8,
+      "image": "/top/person4.jpg"
+    }
+  ]
+
