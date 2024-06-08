@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navber = () => {
-  const user = false
+  const {user,logOut} = useAuth()
   return (
     <div className="shadow">
       <div className="navbar bg-base-100 container">
@@ -94,11 +95,15 @@ const Navber = () => {
                 <span className="badge">New</span>
               </a>
             </li>
-            <li><a>DashBoard</a></li>
+            <li>
+              <NavLink to='dashboard'>
+                Dashboard
+              </NavLink>
+            </li>
             <li><a>Available Coins
             <span className="badge">0</span>
               </a></li>
-            <li><a>Logout</a></li>
+            <li onClick={logOut}><a>Logout</a></li>
           </ul>
         </div>
         :

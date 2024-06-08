@@ -6,6 +6,7 @@ import Error from "../Pages/Share/Error";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/Login/LogIn";
 import Register from "../Pages/Register/Register";
+import DashBoard from "../LayOut/DashBoard";
   
   
   const router = createBrowserRouter([
@@ -28,5 +29,12 @@ import Register from "../Pages/Register/Register";
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<DashBoard/>,
+      children:[
+        
+      ]
+    }
   ]);
   export default router;
