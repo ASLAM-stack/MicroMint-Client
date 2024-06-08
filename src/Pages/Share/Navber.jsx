@@ -1,8 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 const Navber = () => {
   const {user,logOut} = useAuth()
+  const [isAdmin] = useAdmin()
+   
+  
   return (
     <div className="shadow">
       <div className="navbar bg-base-100 container">
@@ -85,13 +96,13 @@ const Navber = () => {
           user ? <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img alt={user.displayName}  src={user.photoURL} />
             </div>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
             <li>
               <a className="justify-between">
-                Profile
+                {user.displayName}
                 <span className="badge">New</span>
               </a>
             </li>
@@ -101,7 +112,7 @@ const Navber = () => {
               </NavLink>
             </li>
             <li><a>Available Coins
-            <span className="badge">0</span>
+            <span className="badge">{isAdmin?.coins}</span>
               </a></li>
             <li onClick={logOut}><a>Logout</a></li>
           </ul>

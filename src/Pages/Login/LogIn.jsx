@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 
 const LogIn = () => {
-    const {signIN} = useAuth();
+    const {signIN,googleSignIn} = useAuth();
      
   const [disabled,setDisabled] = useState(true)
   const navigate = useNavigate()
@@ -49,7 +49,30 @@ const LogIn = () => {
       });
       navigate(from,{replace:true})
     })
+    .catch(error => {
+      console.log(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Please provide a registered email and password',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+    });
   }
+  const handleGoogleSingIn = () =>{
+    googleSignIn()
+    .then(result =>{
+      console.log(result);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You log in success",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate(from,{replace:true})
+    })
+   }
     return (
         <div>
             <div>
@@ -95,7 +118,7 @@ const LogIn = () => {
         <div>
           <p className='text-base mt-2'>Or sign in with</p>
           <div className='  flex justify-center gap-4 py-4'>
-          <AiFillGoogleCircle className='text-3xl' />
+          <AiFillGoogleCircle onClick={handleGoogleSingIn} className='text-3xl' />
           <FaGithub className='text-3xl' />
           </div>
         </div>
