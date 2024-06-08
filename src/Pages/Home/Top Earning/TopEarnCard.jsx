@@ -4,7 +4,6 @@
 
 const TopEarnCard = ({item}) => {
     const {name,skills,earnings,projects_completed,rating,image} = item;
-    console.log(name,skills,earnings,projects_completed,rating,image);
     return (
         <div className="mb-4">
             <div className="card bg-base-100   shadow-xl">

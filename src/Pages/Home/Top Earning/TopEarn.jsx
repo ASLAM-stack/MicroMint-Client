@@ -15,7 +15,6 @@ const TopEarn = () => {
         fetch('/TopEarnin.json')
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
             setTop(data)
         })
     },[])
