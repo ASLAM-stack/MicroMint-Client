@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/Login/LogIn";
 import Register from "../Pages/Register/Register";
 import DashBoard from "../LayOut/DashBoard";
+import AddTask from "../Pages/DashBoard/Add Task/AddTask";
   
   
   const router = createBrowserRouter([
@@ -33,7 +34,10 @@ import DashBoard from "../LayOut/DashBoard";
       path:'dashboard',
       element:<DashBoard/>,
       children:[
-        
+        {
+          path:'/dashboard/addTask',
+          element:<AddTask></AddTask>
+        }
       ]
     }
   ]);
