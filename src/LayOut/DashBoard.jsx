@@ -42,7 +42,7 @@ const DashBoard = () => {
   <>
     <li><Link className="md:text-lg font-semibold"><FaHome className="text-orange-400 text-xl"/>Home</Link></li>
     <li><Link to='/dashboard/addTask' className="md:text-lg font-semibold"><FaTasks className="text-orange-400 text-xl"/>Add New Task</Link></li>
-    <li><Link className="md:text-lg font-semibold"><GiClockwork className="text-orange-400 text-xl"/>My Task</Link></li>
+    <li><Link to='/dashboard/myTask' className="md:text-lg font-semibold"><GiClockwork className="text-orange-400 text-xl"/>My Task</Link></li>
     <li><Link className="md:text-lg font-semibold"><RiShoppingCartFill className="text-orange-400 text-xl"/>Purchase Coin</Link></li>
     <li><Link className="md:text-lg font-semibold"><FaHistory className="text-orange-400 text-xl"/>Payment History</Link></li>
   </>
