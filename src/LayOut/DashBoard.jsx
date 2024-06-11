@@ -11,6 +11,12 @@ const DashBoard = () => {
   const {logOut} = useAuth()
   const [Role] = useAdmin()
   const isAdmin = Role?.role;
+  if (!isAdmin) {
+    return <div className="flex justify-center items-center">
+      <span className="loading loading-bars loading-lg"></span>
+    </div>
+  }
+   
   return (
     <div className="container">
       <div>
@@ -33,17 +39,17 @@ const DashBoard = () => {
                 {isAdmin === 'freelancer' && (
   <>
     <li><Link className="md:text-lg font-semibold"><FaHome className="text-orange-400 text-xl"/>Home</Link></li>
-    <li><Link className="md:text-lg font-semibold"><FaTasks className="text-orange-400 text-xl"/>Task List</Link></li>
-    <li><Link className="md:text-lg font-semibold"><GiClockwork className="text-orange-400 text-xl"/>My Submissions</Link></li>
+    <li><Link to='/dashboard/taskList' className="md:text-lg font-semibold"><FaTasks className="text-orange-400 text-xl"/>Task List</Link></li>
+    <li><Link to='/dashboard/mySubmission' className="md:text-lg font-semibold"><GiClockwork className="text-orange-400 text-xl"/>My Submissions</Link></li>
   </>
 )}
 
 {isAdmin === 'client' && (
   <>
-    <li><Link className="md:text-lg font-semibold"><FaHome className="text-orange-400 text-xl"/>Home</Link></li>
+    <li><Link to='/dashboard/clientHome' className="md:text-lg font-semibold"><FaHome className="text-orange-400 text-xl"/>Home</Link></li>
     <li><Link to='/dashboard/addTask' className="md:text-lg font-semibold"><FaTasks className="text-orange-400 text-xl"/>Add New Task</Link></li>
     <li><Link to='/dashboard/myTask' className="md:text-lg font-semibold"><GiClockwork className="text-orange-400 text-xl"/>My Task</Link></li>
-    <li><Link className="md:text-lg font-semibold"><RiShoppingCartFill className="text-orange-400 text-xl"/>Purchase Coin</Link></li>
+    <li><Link to='/dashboard/buyCoin' className="md:text-lg font-semibold"><RiShoppingCartFill className="text-orange-400 text-xl"/>Purchase Coin</Link></li>
     <li><Link className="md:text-lg font-semibold"><FaHistory className="text-orange-400 text-xl"/>Payment History</Link></li>
   </>
 )}

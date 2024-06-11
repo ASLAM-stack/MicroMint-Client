@@ -4,11 +4,14 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddTask = () => {
   const {user} = useAuth()
+  const [isAdmin,refetch] = useAdmin()
+  const adminCoin = isAdmin?.coins;
   const axiosPublic = useAxiosPublic()
   const axiosSecure = useAxiosSecure()
   const {
@@ -26,29 +29,50 @@ const AddTask = () => {
         headers:{'content-type' : 'multipart/form-data'}
       })
       const task_image_url = res.data.data.display_url;
+      const totalPay = data.quantity * data.money;
+      const currentCoin = adminCoin - totalPay;
+      const updateInfo={currentCoin}  
       const taskInfo = {
         task_title:data.title,
         task_detail:data.details,
         task_quantity:data.quantity,
-        payable_amount:data.money,
+        per_task_pay:data.money,
+        payable_amount:totalPay,
         completion_date:data.date,
         submission_info:data.submission,
         task_image_url,
         creator_name,
         creator_email
       }
-      const taskRes = await axiosSecure.post('/task',taskInfo)
-      console.log(taskRes.data);
-      if (taskRes.data.insertedId) {
-        reset()
+      if (totalPay < adminCoin || totalPay === adminCoin ) {
+
+        const res = await axiosSecure.patch(`/user/${isAdmin?.email}`,updateInfo)
+        if (res.data.modifiedCount > 0) {
+          const taskRes = await axiosSecure.post('/task',taskInfo)
+          console.log(taskRes.data);
+          if (taskRes.data.insertedId) {
+            reset()
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Successfuly added task",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+          refetch()
+        }
+     
+      }
+      else{
         Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Successfuly added task",
-          showConfirmButton: false,
-          timer: 1500
+          icon: "error",
+          title: "Not enough coins to add the task",
+          text: "Please Purchase Coin From below link",
+          footer: '<Link to="">Purchase Coin</Link>'
         });
       }
+      
 
   };
   return (

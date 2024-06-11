@@ -42,7 +42,8 @@ const Register = () => {
             name: data.name,
             email:data.email,
             role: data.role,
-            coins:coins
+            coins:coins,
+            total_pay:0
           }
           axiosPublic.post('/users',userInfo)
           .then(res =>{
@@ -60,7 +61,7 @@ const Register = () => {
           
          
         }) 
-        navigate('/');
+        navigate('/dashboard');
       })
       .catch(error =>
         {
@@ -76,12 +77,13 @@ const Register = () => {
           email:result.user.email,
           name:result.user.displayName,
           role:'freelancer',
-          coins:10
+          coins:10,
+          total_pay:0
         }
         axiosPublic.post('/users',userInfo)
         .then(res =>{
            console.log(res.data);
-           navigate('/')
+           navigate('/dashboard')
         })
       })
     }

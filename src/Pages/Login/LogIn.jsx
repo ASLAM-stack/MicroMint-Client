@@ -1,6 +1,5 @@
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { Link,   useNavigate } from 'react-router-dom';
  
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import { FaGithub } from 'react-icons/fa';
@@ -10,25 +9,16 @@ import useAuth from '../../Hooks/useAuth';
 const LogIn = () => {
     const {signIN,googleSignIn} = useAuth();
      
-  const [disabled,setDisabled] = useState(true)
+   
   const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/';
-  useEffect(() =>{ 
-      loadCaptchaEnginge(6); 
-  },[])
+   
+   
+   
 
 
-  const handdleValidate = (e) =>{
-    const user_captcha_value = e.target.value;
-    if (validateCaptcha(user_captcha_value)) {
-      setDisabled(false)
-    }
-    else{
-      setDisabled(true)
-    }
+   
 
-  }
+  
   const handleLogIn = (e) =>{
     e.preventDefault();
     const form = e.target;
@@ -47,7 +37,7 @@ const LogIn = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      navigate(from,{replace:true})
+      navigate('/dashboard')
     })
     .catch(error => {
       console.log(error);
@@ -70,7 +60,7 @@ const LogIn = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      navigate(from,{replace:true})
+      navigate('/dashboard')
     })
    }
     return (
@@ -102,15 +92,10 @@ const LogIn = () => {
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
-          <label className="label">
-          <LoadCanvasTemplate />
-          </label>
-          <input onBlur={handdleValidate} type="text"  placeholder="type the text above" 
-          name="captcha"
-          className="input input-bordered" required />
+           
         </div>
         <div className="form-control ">
-          <button type="submit" className="btn btn-primary" disabled={disabled}>Login</button>
+          <button type="submit" className="btn btn-primary" >Login</button>
         </div>
       </form>
       <div className='text-center'>

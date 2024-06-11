@@ -1,42 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../../Component/SectionTitle";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { MdDeleteForever, MdEditSquare } from "react-icons/md";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
-import { RiMoneyEuroCircleLine } from "react-icons/ri";
-
  
+import { RiMoneyEuroCircleLine } from "react-icons/ri";
+ 
+ 
+import useAuth from "../../../../Hooks/useAuth";
 
-const MyTask = () => {
+const MySubmissuin = () => {
+    const {user} = useAuth()
     const axiosSecure = useAxiosSecure()
     const {data : tasks = [],refetch} = useQuery({
         queryKey:['task'],
         queryFn: async () =>{
-            const res = await axiosSecure.get('/task')
+            const res = await axiosSecure.get(`/submission/${user.email}`)
             return res.data;
         }
     })
-    const handleDelete = async(id) =>{
-        console.log(id);
-        const res = await axiosSecure.delete(`/task/${id}`)
-        console.log(res.data);
-        if(res.data.deletedCount > 0){
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Successfuly added task",
-                showConfirmButton: false,
-                timer: 1500
-              });
-              
-        }
+    console.log(tasks);
         refetch()
-    }
+   
     console.log(tasks);
     return (
         <div>
-            <SectionTitle subHeading={'Watch Now'} heading={'My task'}></SectionTitle>
+            <SectionTitle subHeading={'Work Place'} heading={'My submission'}></SectionTitle>
             <div>
             <div className="overflow-x-auto">
   <table className="table">
@@ -48,10 +35,8 @@ const MyTask = () => {
         </th>
         <th>Image</th>
         <th>Title</th>
-        <th>Task Count</th>
         <th>Pay Amount</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -78,18 +63,13 @@ const MyTask = () => {
             <td>
                {task.task_title}
             </td>
-            <td>{task.task_quantity
-            }</td>
             <td>{task.payable_amount
             }<RiMoneyEuroCircleLine className="inline-block text-xl text-orange-400 pb-[1px]"/></td>
-            <th>
-            <Link to={`/dashboard/myTask/${task._id}`}>
-            <MdEditSquare className="text-2xl text-green-500"/>
-            </Link>
-            </th>
-            <th onClick={()=>handleDelete(task._id)}>
-            <MdDeleteForever  className="text-2xl text-red-500"/>
-            </th>
+            <td>
+               {task.status}
+            </td>
+            
+             
           </tr>
         })
       }
@@ -104,4 +84,4 @@ const MyTask = () => {
     );
 };
 
-export default MyTask;
+export default MySubmissuin;
