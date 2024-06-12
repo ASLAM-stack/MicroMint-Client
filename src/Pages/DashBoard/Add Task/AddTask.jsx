@@ -5,6 +5,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAdmin from "../../../Hooks/useAdmin";
+import { useNavigate } from "react-router-dom";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -14,6 +15,7 @@ const AddTask = () => {
   const adminCoin = isAdmin?.coins;
   const axiosPublic = useAxiosPublic()
   const axiosSecure = useAxiosSecure()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -71,6 +73,7 @@ const AddTask = () => {
           text: "Please Purchase Coin From below link",
           footer: '<Link to="">Purchase Coin</Link>'
         });
+        navigate('/dashboard/clientHome')
       }
       
 

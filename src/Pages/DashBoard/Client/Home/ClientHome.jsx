@@ -5,10 +5,14 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { TiDelete } from "react-icons/ti";
 import Swal from "sweetalert2";
+import { FaCoins } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ClientHome = () => {
   const [isAdmin] = useAdmin();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
+   
   const { data: tasks = [], refetch } = useQuery({
     queryKey: ["submission"],
     queryFn: async () => {
@@ -16,6 +20,14 @@ const ClientHome = () => {
       return res.data;
     },
   });
+  const { data: coins = [] } = useQuery({
+    queryKey: ["coins"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/coin");
+      return res.data;
+    },
+  });
+   
 
   const pending = tasks.filter((item) => item.status === "pending");
 
@@ -88,6 +100,20 @@ const ClientHome = () => {
       }
     });
   };
+  const handleBuy =async (coin) =>{
+    const email= isAdmin?.email;
+    const {coins,price,heading} =coin;
+    const order = {
+      heading,
+      email,
+      coins,
+      price
+    }
+     const res = await axiosSecure.post('/cart',order)
+     if(res.data.insertedId){
+      navigate('/dashboard/buyCoin')
+     }
+  }
   return (
     <div>
       <SectionTitle
@@ -95,11 +121,37 @@ const ClientHome = () => {
         heading={"Activity"}
       ></SectionTitle>
       <div className="p-4">
-        <div className="text-xl font-semibold grid md:grid-cols-3 grid-cols-1">
-          <h2>Available coin:{isAdmin?.coins}</h2>
-          <h2>Panding :{pending?.length}</h2>
-          <h2>Total Pay:{isAdmin?.total_pay}</h2>
-        </div>
+      <div className="stats shadow  stats-vertical lg:stats-horizontal">
+  
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </div>
+    <div className="stat-title">Available coin</div>
+    <div className="stat-value">{isAdmin?.coins}</div>
+  </div>
+  
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+    </div>
+    <div className="stat-title">Panding :</div>
+    <div className="stat-value">{pending?.length}</div>
+     
+  </div>
+  
+  <div className="stat">
+    <div className="stat-figure text-secondary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+    </div>
+    <div className="stat-title">Total Pay:</div>
+    <div className="stat-value">{isAdmin?.total_pay}</div>
+    
+     
+  </div>
+  
+</div>
+
         <div>
           <div className="overflow-x-auto">
             <table className="table">
@@ -171,6 +223,34 @@ const ClientHome = () => {
             </table>
           </div>
         </div>
+        {/*  */}
+        <div className=" mt-10">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-center">Our Packages</h1>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 grid-cols-1 gap-5">
+
+          {
+            coins?.map(coin => <div key={coin._id} className="card card-compact  bg-base-100 shadow">
+              <figure className="m-4"> 
+              <FaCoins className="text-6xl text-orange-500" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{coin.heading}</h2>
+                <p>Purchase digital coins effortlessly for seamless transactions and investment opportunities.</p>
+                <div  className="card-actions">
+                  <button onClick={() =>handleBuy(coin)} className="btn btn-primary w-full">Buy Now</button>
+                </div>
+              </div>
+            </div>)
+          }
+       
+         
+ 
+       
+          </div>
+        </div>
+        {/*  */}
       </div>
     </div>
   );
